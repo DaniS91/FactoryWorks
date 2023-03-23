@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine
+
+<h4>Add New Machine</h4>
+<p>@Html.ValidationMessageFor(model => model.BrandName, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.ModelName, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.TaskDescription, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.BrandName)
+  @Html.TextBoxFor(model => model.BrandName)
+  <br>
+  @Html.LabelFor(model => model.ModelName)
+  @Html.TextBoxFor(model => model.ModelName)
+  <br>
+  @Html.LabelFor(model => model.TaskDescription)
+  @Html.TextBoxFor(model => model.TaskDescription)
+  <br>
+  <input type="submit" value="Submit New Machine" class="btn btn-success" />
+}
+<p>@Html.ActionLink("Show Machine List", "Index")</p>
