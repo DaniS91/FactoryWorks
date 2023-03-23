@@ -16,11 +16,11 @@ namespace Factory.Controllers
     [HttpGet("/")]
     public ActionResult Index()
     {
-      Engineer[] engineerArray = _db.Engineers.ToArray();
-      Machine[] machineArray = _db.Machines.ToArray();
+      Engineer[] engs = _db.Engineers.ToArray();
+      Machine[] macs = _db.Machines.ToArray();
       Dictionary<string, object[]> model = new Dictionary<string, object[]>();
-      model.Add("engineers",engineerArray);
-      model.Add("machines", machineArray);
+      model.Add("engineers", engs);
+      model.Add("machines", macs);
       return View(model);
     }
   }
