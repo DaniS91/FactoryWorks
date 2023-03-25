@@ -19,7 +19,8 @@
   <br>
   @Html.LabelFor(model => model.TaskDescription)
   @Html.TextBoxFor(model => model.TaskDescription)
+  <small class="form-text text-muted">e.g. Cardboard Baler, Lathe, Die Casting Machine </small>
   <br>
-  <input type="submit" value="Submit New Machine" class="btn btn-success" />
+  <input type="submit" value="Submit" class="btn btn-success" />
 }
 <p>@Html.ActionLink("Show Machine List", "Index")</p>

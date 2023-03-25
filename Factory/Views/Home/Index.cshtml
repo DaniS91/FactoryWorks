@@ -9,19 +9,20 @@ Layout = "_Layout";
 <h3>Machines</h3>
 @if (Model["machines"].Length == 0)
 {
-  <p>No machines have added yet</p>
+  <p class="error">No machines have been added yet</p>
 }
 <ul class="list">
   @foreach (Machine mac in Model["machines"])
   {
-    <li>@Html.ActionLink(@mac.BrandName + @mac.ModelName, "Details","Machines", new { id = @mac.MachineId })</li>
+    <li>@Html.ActionLink(@mac.BrandName +" "+ @mac.ModelName, "Details","Machines", new { id = @mac.MachineId })</li>
   }
 </ul>
+
 
 <h3>Engineers</h3>
 @if (Model["engineers"].Length == 0)
 {
-  <p>No items have been added yet!</p>
+  <p class="error">No engineers have been added yet</p>
 }
 <ul class="list">
   @foreach (Engineer eng in Model["engineers"])
