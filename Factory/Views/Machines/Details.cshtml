@@ -1,0 +1,33 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Factory.Models
+@model Factory.Models.Machine
+
+<h1>Machine Details</h1>
+<hr>
+<h3>@Html.DisplayNameFor(model => model.BrandName): @Html.DisplayFor(model => model.BrandName)</h3>
+<h3>@Html.DisplayNameFor(model => model.ModelName): @Html.DisplayFor(model => model.ModelName)</h3>
+<h3>@Html.DisplayNameFor(model => model.TaskDescription): @Html.DisplayFor(model => model.TaskDescription)</h3>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p class="error">This machine does not have an engineer assigned!</p>
+}
+else
+{
+  <h3>Engineers licensed for this machine:</h3>
+  <ul class="list">
+    @foreach(EngineerMachine join in Model.JoinEntities)
+    {
+      <li>@join.Engineer.LastName, @join.Engineer.FirstName</li>
+      @using (Html.BeginForm("DeleteJoin", "Machines"))
+      {
+        @Html.Hidden("joinId", @join.EngineerMachineId)
+        <input type="submit" value="Delete" class="btn btn-danger"/>
+      }
+    }
+  </ul>
+
+}
