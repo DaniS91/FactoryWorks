@@ -27,7 +27,9 @@ Layout = "_Layout";
 <ul class="list">
   @foreach (Engineer eng in Model["engineers"])
   {
-    <li>@Html.ActionLink(@eng.FirstName + @eng.LastName, "Details", "Engineers", new { id = @eng.EngineerId })</li>
+    <li>@Html.ActionLink(@eng.FirstName + " " + @eng.LastName, "Details", "Engineers", new { id = @eng.EngineerId })</li>
   }
 </ul>
+<a href="/Machines/Create"><button type="button" class="btn btn-primary">Add New Machine</button></a>
+<a href="/Engineers/Create"><button type="button" class="btn btn-secondary">Add New Engineer</button></a>
 
