@@ -15,9 +15,12 @@
   {
     <table>
       <tr>
-        <th>Model Name</th>
-        <th>Brand Name</th>
-        <th>Task Description</th>
+        <th>@Html.ActionLink("Model Name", "Index", new { sortOrder = ViewBag.NameSortParm})</th>
+        @* <th>Model Name</th> *@
+        <th>@Html.ActionLink("Brand Name", "Index", new { sortOrder = ViewBag.BrandSortParm})</th>
+        @* <th>Brand Name</th> *@
+        <th>@Html.ActionLink("Task Description", "Index", new { sortOrder = ViewBag.TaskSortParm})</th>
+        @* <th>Task Description</th> *@
         <th>Actions</th>
       </tr>
       @foreach (Machine machine in Model)

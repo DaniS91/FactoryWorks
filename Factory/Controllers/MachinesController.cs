@@ -15,10 +15,37 @@ namespace Factory.Controllers
       _db = db;
     }
 
-    public ActionResult Index()
+    public ActionResult Index(string sortOrder)
     {
-      List<Machine> model = _db.Machines.ToList();
-      return View(model);
+      ViewBag.BrandSortParm = sortOrder == "BrandName" ? "brandname_desc" : "BrandName";
+      ViewBag.NameSortParm = sortOrder == "ModelName" ? "modelname_desc" : "ModelName";
+      ViewBag.TaskSortParm = sortOrder == "TaskDescription" ? "taskdescription_desc" : "TaskDescription";
+
+      var machines = from s in _db.Machines
+                      select s;
+      switch (sortOrder)
+        {
+          case "BrandName":
+            machines = machines.OrderBy(s => s.BrandName);
+            break;
+          case "brandname_desc":
+            machines = machines.OrderByDescending(s => s.BrandName);
+            break;
+          case "ModelName":
+            machines = machines.OrderBy(s => s.ModelName);
+            break;
+          case "modelname_desc":
+            machines = machines.OrderByDescending(s => s.ModelName);
+            break;
+          case "TaskDescription":
+            machines = machines.OrderBy(s => s.TaskDescription);
+            break;
+          case "taskdescription_desc":
+            machines = machines.OrderByDescending(s => s.TaskDescription);
+            break;
+        }
+      // List<Machine> model = _db.Machines.ToList();
+      return View(machines.ToList());
     }
         public ActionResult Create()
     {
