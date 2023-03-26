@@ -15,9 +15,29 @@ namespace Factory.Controllers
       _db = db;
     }
 
-    public ActionResult Index()
+    public ActionResult Index(string sortOrder)
     {
-      return View(_db.Engineers.ToList());
+      ViewBag.FirstNameSortParm = sortOrder == "FirstName" ? "firstname_desc" : "FirstName";
+      ViewBag.LastNameSortParm = sortOrder == "LastName" ? "lastname_desc" : "LastName";
+
+      var engineers = from s in _db.Engineers
+                      select s;
+      switch (sortOrder)
+        {
+          case "FirstName":
+            engineers = engineers.OrderBy(s => s.FirstName);
+            break;
+          case "firstname_desc":
+            engineers = engineers.OrderByDescending(s => s.FirstName);
+            break;
+          case "LastName":
+            engineers = engineers.OrderBy(s => s.LastName);
+            break;
+          case "lastname_desc":
+            engineers = engineers.OrderByDescending(s => s.LastName);
+            break;
+        }
+      return View(engineers.ToList());
     }
 
     public ActionResult Details(int id)
