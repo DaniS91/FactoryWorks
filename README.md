@@ -34,7 +34,9 @@
 
 #### Database setup
 * you will need to recreate the database used for this project
-* you can view the database structure in the file titled "factory_dani_steely" in the root directory 
+* you can view the database structure in the file titled "factory_dani_steely" in the root directory
+* you can alternatively use code-first database setup using migrations
+* to do this, follow the lesson on ["Code-First Development"][Code-First Dev] from Epicodus
 
 ## Description
 
@@ -68,7 +70,7 @@ Copyright (c) _3/25/23_ _Dani Steely_
 [Epicodus]: https://www.epicodus.com/
 [C# course main]: https://www.learnhowtoprogram.com/c-and-net-part-time
 [C# chapter]: https://www.learnhowtoprogram.com/c-and-net-part-time/many-to-many-relationships
-
+[Code-First Dev]: https://www.learnhowtoprogram.com/c-and-net-part-time/many-to-many-relationships/code-first-development-and-mig
 
 
 
